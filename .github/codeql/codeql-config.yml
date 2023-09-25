@@ -4,6 +4,5 @@ name: "My CodeQL config"
 #   - uses: security-and-quality
 
 paths-ignore: 
-  - node_modules
   - codeql-runner-linux
   - codeql-runner
