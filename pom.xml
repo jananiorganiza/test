@@ -46,6 +46,11 @@
       <artifactId>spring-boot-starter-cache</artifactId>
     </dependency>
     <dependency>
+      <groupId>org.springframework.samples</groupId>
+      <artifactId>spring-petclinic</artifactId>
+      <version>4.0.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
@@ -287,6 +292,16 @@
   </licenses>
 
   <repositories>
+     <repository>
+        <id>maven</id>
+        <url>https://pkgs.dev.azure.com/janakiab981/_packaging/maven/maven/v1</url>
+        <releases>
+          <enabled>true</enabled>
+        </releases>
+        <snapshots>
+          <enabled>true</enabled>
+        </snapshots>
+      </repository>
     <repository>
       <id>spring-snapshots</id>
       <name>Spring Snapshots</name>
@@ -443,5 +458,16 @@
       </build>
     </profile>
   </profiles>
-
+  <distributionManagement>
+      <repository>
+        <id>maven</id>
+        <url>https://pkgs.dev.azure.com/janakiab981/_packaging/maven/maven/v1</url>
+        <releases>
+          <enabled>true</enabled>
+        </releases>
+        <snapshots>
+          <enabled>true</enabled>
+        </snapshots>
+      </repository>
+  </distributionManagement>
 </project>
