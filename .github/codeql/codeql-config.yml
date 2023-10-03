@@ -6,3 +6,4 @@ name: "My CodeQL config"
 paths-ignore: 
   - codeql-runner-linux
   - codeql-runner
+  - snapshot
