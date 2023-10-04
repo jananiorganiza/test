@@ -5,43 +5,43 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-# - task: Maven@4
-#   inputs:
-#     mavenPomFile: 'pom.xml'
-#     publishJUnitResults: true
-#     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-#     javaHomeOption: 'JDKVersion'
-#     jdkVersionOption: '1.17'
-#     mavenVersionOption: 'Default'
-#     mavenAuthenticateFeed: true
-#     effectivePomSkip: false
-#     sonarQubeRunAnalysis: false
-# - script: |
-#     wget  https://github.com/github/codeql-action/releases/download/codeql-bundle-20200826/codeql-runner-linux
-#     chmod +x /home/vsts/codeql-runner-tools/CodeQL/0.0.0-20200826/x64/codeql/tools/linux64
-#   displayName: 'Get latest CodeQL package. Install on Agent.'
-
-# - script: |
-#     ./codeql-runner-linux init \
-#     --repository jananiorganiza/test \
-#     --github-url https://github.com \
-#     --github-auth $(GITHUB_PAT) \
-#     --languages java \
-#     --config-file .github/codeql/codeql-config.yml 
-#   displayName: 'Initialize CodeQL Executable and create a CodeQL database'
-  
-# - script: |
-#     ./codeql-runner-linux analyze \
-#     --repository jananiorganiza/test  \
-#     --github-url https://github.com \
-#     --github-auth $(GITHUB_PAT) \
-#     --commit $(Build.SourceVersion) \
-#     --ref $(Build.SourceBranch)
-#   displayName: 'Populate the CodeQL runner databases, analyze them, and upload the results to GitHub.'
-- task: Bash@3
+- task: Maven@4
   inputs:
-    targetType: 'inline'
-    script: |
-      echo $(Build.SourcesDirectory)
-      cd $(Build.SourcesDirectory)
-      ls
+    mavenPomFile: 'pom.xml'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.17'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: true
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
+- script: |
+    wget  https://github.com/github/codeql-action/releases/download/codeql-bundle-20200826/codeql-runner-linux
+    chmod +x /home/vsts/codeql-runner-tools/CodeQL/0.0.0-20200826/x64/codeql/tools/linux64
+  displayName: 'Get latest CodeQL package. Install on Agent.'
+
+- script: |
+    ./codeql-runner-linux init \
+    --repository jananiorganiza/test \
+    --github-url https://github.com \
+    --github-auth $(GITHUB_PAT) \
+    --languages java \
+    --config-file .github/codeql/codeql-config.yml 
+  displayName: 'Initialize CodeQL Executable and create a CodeQL database'
+  
+- script: |
+    ./codeql-runner-linux analyze \
+    --repository jananiorganiza/test  \
+    --github-url https://github.com \
+    --github-auth $(GITHUB_PAT) \
+    --commit $(Build.SourceVersion) \
+    --ref $(Build.SourceBranch)
+  displayName: 'Populate the CodeQL runner databases, analyze them, and upload the results to GitHub.'
+# - task: Bash@3
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       echo $(Build.SourcesDirectory)
+#       cd $(Build.SourcesDirectory)
+#       ls
