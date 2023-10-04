@@ -26,7 +26,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-     ./codeql-runner-linux init \
+     sudo ./codeql-runner-linux init \
      --repository jananiorganiza/test \
      --github-url https://github.com \
      --github-auth $(GITHUB_PAT) \
