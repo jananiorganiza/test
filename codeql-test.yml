@@ -21,23 +21,25 @@ steps:
     chmod +x codeql-runner-linux
   displayName: 'Get latest CodeQL package. Install on Agent.'
 
+# - script: |
+#     ./codeql-runner-linux init \
+#     --repository jananiorganiza/test \
+#     --github-url https://github.com \
+#     --github-auth $(GITHUB_PAT) \
+#     --languages java \
+#     --config-file .github/codeql/codeql-config.yml 
 - script: |
-    ./codeql-runner-linux init \
-    --repository jananiorganiza/test \
-    --github-url https://github.com \
-    --github-auth $(GITHUB_PAT) \
-    --languages java \
-    --config-file .github/codeql/codeql-config.yml 
+    codeql database create /codeql-dbs/jananiorganiza/test --language=java
   displayName: 'Initialize CodeQL Executable and create a CodeQL database'
   
-- script: |
-    ./codeql-runner-linux analyze \
-    --repository jananiorganiza/test  \
-    --github-url https://github.com \
-    --github-auth $(GITHUB_PAT) \
-    --commit $(Build.SourceVersion) \
-    --ref $(Build.SourceBranch)
-  displayName: 'Populate the CodeQL runner databases, analyze them, and upload the results to GitHub.'
+# - script: |
+#     ./codeql-runner-linux analyze \
+#     --repository jananiorganiza/test  \
+#     --github-url https://github.com \
+#     --github-auth $(GITHUB_PAT) \
+#     --commit $(Build.SourceVersion) \
+#     --ref $(Build.SourceBranch)
+#   displayName: 'Populate the CodeQL runner databases, analyze them, and upload the results to GitHub.'
 # - task: Bash@3
 #   inputs:
 #     targetType: 'inline'
