@@ -24,6 +24,7 @@ steps:
     tar -xvzf codeql-bundle-linux64.tar.gz
     ls
     pwd
+    mv /home/vsts/work/1/s/pom.xml $(codeql_path)
     cd $(codeql_path)
     ./codeql database create java-database --language=java --command='mvn clean package'
     # chmod +x codeql-runner-linux 
