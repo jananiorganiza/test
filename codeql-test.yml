@@ -24,7 +24,8 @@ steps:
     tar -xvzf codeql-bundle-linux64.tar.gz
     ls
     pwd
-    $(codeql_path)/codeql database create java-database --language=java --command='mvn clean package'
+    cd $(codeql_path)
+    ./codeql database create java-database --language=java --command='mvn clean package'
     # chmod +x codeql-runner-linux 
   displayName: 'Get latest CodeQL package. Install on Agent.'
 
