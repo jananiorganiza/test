@@ -23,7 +23,7 @@ steps:
     ls
     tar -xvzf codeql-bundle-linux64.tar.gz
     ls
-    
+    codeql database create java-database --language=java --command='mvn clean package'
   displayName: 'Get latest CodeQL package. Install on Agent.'
 
 # - task: Bash@3
